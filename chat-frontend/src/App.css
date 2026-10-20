@@ -4,6 +4,11 @@ border-radius: 25px;
 
 margin-right: 40px !important;
 }
+ .sidebaricon {
+  position: fixed;
+  left:40px !important;
+  top: 30px;
+}
 
 .receiever{
   border-radius: 25px;
@@ -40,9 +45,16 @@ margin-left: 50px !important;
      margin-left: 20px !important;
   
   }
+ 
   .mobile-ai{
    display:  flex;
    
+  }
+  .sidebaricon {
+    position: fixed !important;
+    left: 10px !important;
+    top: 30px !important;
+    
   }
   
 }
@@ -100,3 +112,4 @@ margin-left: 50px !important;
     opacity: 1;
   }
 }
+

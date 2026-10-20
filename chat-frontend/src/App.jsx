@@ -441,7 +441,7 @@ const ClickButn = () => {
 
   return (
     <div>
-      <div className='flex items-center'>
+      <div className=' sidebaricon '>
         <div>
       
        <Button  sx={{
@@ -457,11 +457,11 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
       </div>
 
 
-      <div className='font-bold flex justify-center p-5 text-[30px]'>
+
+      </div>
+         <div className='font-bold flex justify-center p-5 text-[30px]'>
         Restaurant Agent
       </div>
-      </div>
-   
 
 
        <div>
@@ -505,7 +505,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
      
      ></input>
-    <button className='translate-y-1 shadow-md' onClick={model}>
+    <button className='translate-y-1' onClick={model}>
 
         <Box sx={{ display: 'flex', alignItems: 'center' }} >
       <Box sx={{ m: 1, position: 'relative' }}>
