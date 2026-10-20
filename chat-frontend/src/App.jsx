@@ -133,16 +133,9 @@ useEffect(()=>{
 
 const OnDelte = ()=>{
   axios.delete('https://com-usa-backend.vercel.app/api/form/rest-delete').then(res => res).catch(err => err)
-  const result = axios.get(
-  'https://com-usa-backend.vercel.app/api/form/rest-get'
-);
-
-setstate(
-  result.data.data.map(item => ({
-    Name: item.name,
-    Message: item.message
-  }))
-);
+    setstate([]);
+    setSuccess(false)
+    setLoading(false)
 }
 
 
