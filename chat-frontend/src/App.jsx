@@ -397,7 +397,7 @@ const ClickButn = () => {
       className="translate-y-2"
     sx={{ width: 44, height: 44, flexShrink: 0 }}
   >
-    <GrAdd />
+    <GrAdd className="text-gray-500"  />
   </IconButton>
      <input type='text' className='shadow-md w-[80%] h-[50px] p-5 searchbar  ' placeholder='Ask Anything...'
       value ={res}
