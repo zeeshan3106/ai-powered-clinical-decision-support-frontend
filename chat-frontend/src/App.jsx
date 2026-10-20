@@ -150,6 +150,7 @@ const model = async () => {
     }
 
     const remaining = decoder.decode()
+    
   
 
     if (remaining) {
@@ -167,6 +168,10 @@ const model = async () => {
     }
   } catch (err) {
     console.error('SERVER:', err)
+  }
+  finally {
+     setSuccess(true);
+    setLoading(false);
   }
 }
 
@@ -224,6 +229,8 @@ const ClickButn = () => {
     if (e.key === 'Enter' && !e.shiftKey ) {
       e.preventDefault()
       if (e.target.value.trim() !== "") {
+         setLoading(true);
+  setSuccess(false);
       model();
     } else {
       toast.error("Enter a value");
@@ -249,7 +256,7 @@ const ClickButn = () => {
         }}
           
         >
-          {success ? <CheckIcon /> : <GrFormNextLink className='text-[29px]'/>}
+          {success ? '✓': <GrFormNextLink className="text-[29px]" />}
         </Fab>
 
         
