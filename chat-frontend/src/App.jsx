@@ -8,7 +8,7 @@ import { green } from '@mui/material/colors';
 
 import { GrFormNextLink } from "react-icons/gr";
 import toast, { Toaster } from 'react-hot-toast';
-
+import axios from 'axios'
 function App() {
 
 
@@ -26,10 +26,32 @@ const [loading, setLoading] = React.useState(false);
 
 
 
-  const makeLinksClickable = (text) => {
-  const urlRegex = /(https?:\/\/[^\s]+)/g
+//   const makeLinksClickable = (text) => {
+//   const urlRegex = /(https?:\/\/[^\s]+)/g
 
-  return text.split(urlRegex).map((part, index) => {
+//   return text.split(urlRegex).map((part, index) => {
+//     if (part.match(/^https?:\/\//)) {
+//       return (
+//         <a
+//           key={index}
+//           href={part}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="text-blue-500 underline break-all"
+//         >
+//           {part}
+//         </a>
+//       )
+//     }
+
+//     return part
+//   })
+// }
+const makeLinksClickable = (text) => {
+  const safeText = String(text ?? "");
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+  return safeText.split(urlRegex).map((part, index) => {
     if (part.match(/^https?:\/\//)) {
       return (
         <a
@@ -41,13 +63,12 @@ const [loading, setLoading] = React.useState(false);
         >
           {part}
         </a>
-      )
+      );
     }
 
-    return part
-  })
-}
-
+    return part;
+  });
+};
 
  
 
@@ -87,8 +108,43 @@ const [loading, setLoading] = React.useState(false);
 
   // }
 
+
+
+
+useEffect(()=>{
+  axios.get('http://localhost:5000/api/form/rest-get').then(res => console.log(res)).catch(err => err)
+
+  
+
+
+
+},[])
+
+
 const model = async () => {
+   axios.get('http://localhost:5000/api/form/rest-get').then(res => console.log(res)).catch(err => err)
+
   const item = res
+
+
+    const response = await fetch(
+      'http://localhost:5000/api/form/rest-post',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          message: item
+        })
+      }
+    );
+
+
+
+
+
 
   if (item === null || !item.trim()) return
 
@@ -128,28 +184,83 @@ const model = async () => {
 
     const reader = response.body.getReader()
     const decoder = new TextDecoder()
+let fullMessage = "";
+    // while (true) {
+    //   const { value, done } = await reader.read()
 
+    //   if (done) break
+
+    //   const chunk = decoder.decode(value, { stream: true })
+
+    //   setstate(prev => {
+    //     const updated = [...prev]
+    //     const lastIndex = updated.length - 1
+
+    //     updated[lastIndex] = {
+    //       ...updated[lastIndex],
+    //       Message: updated[lastIndex].Message + chunk
+    //     }
+
+    //     return updated
+    //   })
+    // }
     while (true) {
-      const { value, done } = await reader.read()
+    const { value, done } = await reader.read();
 
-      if (done) break
+    if (done) break;
 
-      const chunk = decoder.decode(value, { stream: true })
+    const chunk = decoder.decode(value, { stream: true });
 
-      setstate(prev => {
-        const updated = [...prev]
-        const lastIndex = updated.length - 1
+    fullMessage += chunk;
+
+    setstate(prev => {
+        const updated = [...prev];
+        const lastIndex = updated.length - 1;
 
         updated[lastIndex] = {
-          ...updated[lastIndex],
-          Message: updated[lastIndex].Message + chunk
-        }
+            ...updated[lastIndex],
+            Message: updated[lastIndex].Message + chunk
+        };
 
-        return updated
-      })
-    }
+        return updated;
+    });
+}
 
     const remaining = decoder.decode()
+   
+ fullMessage += remaining;
+
+    const saveResponse = await fetch(
+    'http://localhost:5000/api/form/rest-post',
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+        
+                {
+                    name: 'AI Message',
+                    message: fullMessage
+                }
+    
+      )
+    }
+);
+const result = await axios.get(
+  'http://localhost:5000/api/form/rest-get'
+);
+
+setstate(
+  result.data.data.map(item => ({
+    Name: item.name,
+    Message: item.message
+  }))
+);
+  
+
+
+
     
   
 
