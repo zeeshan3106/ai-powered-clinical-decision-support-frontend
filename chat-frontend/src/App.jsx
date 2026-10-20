@@ -1,12 +1,28 @@
 import React, { useState,useEffect, useRef  } from 'react'
 import './App.css'
-import Button from '@mui/material/Button';
-
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import CheckIcon from '@mui/icons-material/Check';
+import CircularProgress from '@mui/material/CircularProgress';
+import { green } from '@mui/material/colors';
+import SaveIcon from '@mui/icons-material/Save';
 import { GrFormNextLink } from "react-icons/gr";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
 
 
+const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+ 
+  const buttonSx = {
+    ...(success && {
+      bgcolor: green[500],
+      '&:hover': {
+        bgcolor: green[700],
+      },
+    }),
+  };
 
 
 
@@ -102,10 +118,12 @@ const model = async () => {
      
     if (!response.ok) {
       throw new Error('Server request failed')
+       toast.error('Unable to get a response from the server.');
     }
 
     if (!response.body) {
       throw new Error('Streaming response is unavailable')
+       toast.error('Unable to get a response from the server.');
     }
 
     const reader = response.body.getReader()
@@ -203,17 +221,61 @@ const ClickButn = () => {
       value ={res}
      onChange={OnChangeSearch}
        onKeyDown={(e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey ) {
       e.preventDefault()
-      model()
+      if (e.target.value.trim() !== "") {
+      model();
+    } else {
+      toast.error("Enter a value");
     }
+    }
+    
   }}
 
      
      ></input>
-  <button className="submit" onClick={model}>
-      Submit
-  </button>
+    <button className='' onClick={model}>
+
+        <Box sx={{ display: 'flex', alignItems: 'center' }} >
+      <Box sx={{ m: 1, position: 'relative' }}>
+        <Fab
+          aria-label="save"
+          color="primary"
+          sx={{
+          ...buttonSx,
+          width: 40,
+          height: 40,
+          minHeight: 40,
+        }}
+          
+        >
+          {success ? <CheckIcon /> : <GrFormNextLink className='text-[29px]'/>}
+        </Fab>
+
+        
+        {loading && (
+          <CircularProgress
+            aria-label="Loading…"
+            size={48}
+            sx={{
+            color: green[500],
+            position: 'absolute',
+            top: -4,
+            left: -4,
+            zIndex: 1,
+          }}
+          />
+        )}
+
+
+
+      </Box>
+    
+    </Box>
+    
+        </button>
+
+  <Toaster />
 </div>
      
        
