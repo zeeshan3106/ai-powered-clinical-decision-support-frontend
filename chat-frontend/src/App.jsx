@@ -81,6 +81,12 @@ const model = async () => {
     { Name: name, Message: item },
     { Name: 'AI Message', Message: '' }
   ])
+  setTimeout(() => {
+  userMessageRef.current?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  })
+}, 100)
  setres('')
   try {
     const response = await fetch(
@@ -150,6 +156,7 @@ const model = async () => {
 
   
    const lastMessageRef = useRef(null)
+   const userMessageRef = useRef(null)
 
 useEffect(() => {
   lastMessageRef.current?.scrollIntoView({
@@ -195,6 +202,13 @@ const ClickButn = () => {
      <input type='text' className='shadow-md w-[80%] h-[50px] p-5 searchbar  ' placeholder='Enter value'
       value ={res}
      onChange={OnChangeSearch}
+       onKeyDown={(e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      model()
+    }
+  }}
+
      
      ></input>
   <button className="submit" onClick={model}>
@@ -203,7 +217,7 @@ const ClickButn = () => {
 </div>
      
        
-<div className='pb-24'>   
+<div className='pb-35'>   
 {
   state.map((item,index)=>(
     
@@ -211,7 +225,13 @@ const ClickButn = () => {
       <div
 
          key={index}
-    ref={index === state.length - 1 ? lastMessageRef : null}
+    ref={
+  index === state.length - 2
+    ? userMessageRef
+    : index === state.length - 1
+    ? lastMessageRef
+    : null
+}
       
       className={
     item.Name === name
@@ -224,7 +244,7 @@ const ClickButn = () => {
 <div className={
    item.Name === name
         ? 'bg-[#D9FDD3] p-5 shadow-md sender w-[40%] break-words overflow-wrap-anywhere pcwidth mobile-sender'
-        : 'bg-white receiever p-5 shadow-md   w-[40%] break-words overflow-wrap-anywhere pcwidth Response mobile-rec'
+        : 'bg-white receiever p-8 shadow-md   w-[40%] break-words overflow-wrap-anywhere pcwidth Response mobile-rec'
 
 }>
   {makeLinksClickable(item.Message)}
