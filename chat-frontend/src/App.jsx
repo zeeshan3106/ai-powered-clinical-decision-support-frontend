@@ -461,11 +461,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
         Restaurant Agent
       </div>
       </div>
-      <div className='flex justify-center'>
-        <Button variant='contained' sx={{
-          fontWeight:'bold'
-        }} onClick={OnDelte}>Delete</Button>
-      </div>
+   
 
 
        <div>
