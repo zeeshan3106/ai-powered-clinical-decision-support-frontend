@@ -5,11 +5,24 @@ import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { green } from '@mui/material/colors';
+import { CSSProperties } from "react";
+import { BeatLoader } from "react-spinners";
 
 import { GrFormNextLink } from "react-icons/gr";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios'
 import Button from '@mui/material/Button';
+
+
+
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};  
+
+
 function App() {
 
 
@@ -26,6 +39,8 @@ const [loading, setLoading] = React.useState(false);
   };
 
 
+const [loadings, setLoadings] = useState(true);
+  const [color, setColor] = useState("#ffffff");
 
 //   const makeLinksClickable = (text) => {
 //   const urlRegex = /(https?:\/\/[^\s]+)/g
@@ -142,6 +157,15 @@ const OnDelte = ()=>{
 const model = async () => {
 
   const item = res
+
+
+  if (!item) {
+    toast.error("Enter a value");
+    return;
+  }
+
+  setLoading(true);
+  setSuccess(false);
 
 
     const response = await fetch(
@@ -356,6 +380,14 @@ const ClickButn = () => {
         }} onClick={OnDelte}>Delete</Button>
       </div>
       <div>
+
+
+
+
+      </div>
+
+
+      <div>
        
           <div className="fixed bottom-0 left-0 w-full bg-white p-3 shadow-lg flex justify-center z-50">
      <input type='text' className='shadow-md w-[80%] h-[50px] p-5 searchbar  ' placeholder='Enter value'
@@ -452,7 +484,25 @@ const ClickButn = () => {
         : 'bg-white receiever p-8 shadow-md   w-[40%] break-words overflow-wrap-anywhere pcwidth Response mobile-rec'
 
 }>
-  {makeLinksClickable(item.Message)}
+ {item.Name === "AI Message" && loading && !item.Message ? (
+  // <BeatLoader
+  //   // color="#9ca3af"
+  //     color="#36d7b7"
+  //   size={8}
+  //   margin={3}
+  //   speedMultiplier={1}
+  // />
+
+  <div className="multi-loader">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+
+) : (
+  makeLinksClickable(item.Message)
+)}
       
       </div>
 
