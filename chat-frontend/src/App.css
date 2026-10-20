@@ -113,3 +113,27 @@ margin-left: 50px !important;
   }
 }
 
+.welcome-screen {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+
+.welcome-screen h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.welcome-screen p {
+  margin-top: 10px;
+  color: #666;
+}
+
+@media (max-width: 500px) {
+  .welcome-screen h1 {
+    font-size: 24px;
+  }
+}

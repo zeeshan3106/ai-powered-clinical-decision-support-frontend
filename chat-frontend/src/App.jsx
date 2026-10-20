@@ -40,7 +40,7 @@ const override = {
 
 function App() {
 
-
+const [started, setStarted] = useState(false);
    const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -236,6 +236,8 @@ const model = async () => {
 
   setLoading(true);
   setSuccess(false);
+  setStarted(true);
+ 
 
 
     const response = await fetch(
@@ -544,7 +546,12 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
   <Toaster />
 </div>
-     
+     {!started && state.length === 0 && (
+  <div className="welcome-screen">
+   <h1 className='"welcome-title'>How Can I Help You Today?</h1>
+<p>Explore our menu, discover your favorites, and book your table instantly.</p>
+  </div>
+)}
        
 <div className='pb-35'>   
 {
