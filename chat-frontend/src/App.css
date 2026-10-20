@@ -133,7 +133,40 @@ margin-left: 50px !important;
 }
 
 @media (max-width: 500px) {
+  .user-message {
+  background: #f4f4f4;
+  color: #171717;
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 75%;
+  width: fit-content;
+  margin-left: auto;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
   .welcome-screen h1 {
     font-size: 24px;
   }
+}
+
+.user-message {
+  background: #f4f4f4;
+  color: #171717;
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 75%;
+  width: fit-content;
+  margin-left: auto;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.ai-message {
+  background: transparent;
+  color: #262626;
+  padding: 8px 0;
+  width: 100%;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
 }
