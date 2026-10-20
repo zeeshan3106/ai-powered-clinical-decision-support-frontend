@@ -132,7 +132,7 @@ useEffect(()=>{
 
 
 const OnDelte = ()=>{
-  axios.delete('https://com-usa-backend.vercel.app/rest-delete').then(res => res).catch(err => err)
+  axios.delete('https://com-usa-backend.vercel.app/api/form/rest-delete').then(res => res).catch(err => err)
 }
 
 
