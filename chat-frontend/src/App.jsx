@@ -437,20 +437,7 @@ const ClickButn = () => {
         </Fab>
 
         
-        {loading && (
-          <CircularProgress
-            aria-label="Loading…"
-            size={48}
-            sx={{
-            color: green[500],
-            position: 'absolute',
-            top: -4,
-            left: -4,
-            zIndex: 1,
-          }}
-          />
-        )}
-
+     
 
 
       </Box>
