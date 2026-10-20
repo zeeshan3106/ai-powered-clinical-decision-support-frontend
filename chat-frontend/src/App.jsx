@@ -2,6 +2,7 @@ import React, { useState,useEffect, useRef  } from 'react'
 import './App.css'
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+import { TiThMenuOutline } from "react-icons/ti";
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -15,6 +16,19 @@ import axios from 'axios'
 import Button from '@mui/material/Button';
 
 
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+
+
+
+
 
 
 const override = {
@@ -25,6 +39,61 @@ const override = {
 
 
 function App() {
+
+
+   const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+  const DrawerList = (
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+      <List>
+        {['New Chat', 'Recent', 'Subscriptions', 'Search'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['API', 'Profile', 'Settings'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+      <Button
+        variant="contained"
+        color="error"
+        fullWidth
+        sx={{ fontWeight: 'bold' }}
+        onClick={(e) => {
+          e.stopPropagation();
+          OnDelte();
+          setOpen(false)
+        }}
+      >
+        Delete Chat
+      </Button>
+    </Box>
+    </Box>
+  );
+
+
+
 
 
 const [loading, setLoading] = React.useState(false);
@@ -372,14 +441,36 @@ const ClickButn = () => {
 
   return (
     <div>
+      <div className='flex items-center'>
+        <div>
+      
+       <Button  sx={{
+    minWidth: 32,
+    width: 32,
+    padding: 0,
+    fontSize: 20
+  }}
+onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
+      <Drawer open={open} onClose={toggleDrawer(false)}>
+        {DrawerList}
+      </Drawer>
+      </div>
+
+
       <div className='font-bold flex justify-center p-5 text-[30px]'>
         Restaurant Agent
+      </div>
       </div>
       <div className='flex justify-center'>
         <Button variant='contained' sx={{
           fontWeight:'bold'
         }} onClick={OnDelte}>Delete</Button>
       </div>
+
+
+       <div>
+     
+    </div>
       <div>
 
 
