@@ -9,6 +9,7 @@ import { green } from '@mui/material/colors';
 import { GrFormNextLink } from "react-icons/gr";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios'
+import Button from '@mui/material/Button';
 function App() {
 
 
@@ -112,7 +113,16 @@ const makeLinksClickable = (text) => {
 
 
 useEffect(()=>{
-  axios.get('http://localhost:5000/api/form/rest-get').then(res => console.log(res)).catch(err => err)
+  axios.get('https://com-usa-backend.vercel.app/api/form/rest-get').then(res =>{
+    setstate(
+  res.data.data.map(item => ({
+    Name: item.name,
+    Message: item.message
+  }))
+);
+  
+    
+  }).catch(err => err)
 
   
 
@@ -121,14 +131,18 @@ useEffect(()=>{
 },[])
 
 
+const OnDelte = ()=>{
+  axios.delete('https://com-usa-backend.vercel.app/rest-delete').then(res => res).catch(err => err)
+}
+
+
 const model = async () => {
-   axios.get('http://localhost:5000/api/form/rest-get').then(res => console.log(res)).catch(err => err)
 
   const item = res
 
 
     const response = await fetch(
-      'http://localhost:5000/api/form/rest-post',
+      'https://com-usa-backend.vercel.app/api/form/rest-post',
       {
         method: 'POST',
         headers: {
@@ -231,7 +245,7 @@ let fullMessage = "";
  fullMessage += remaining;
 
     const saveResponse = await fetch(
-    'http://localhost:5000/api/form/rest-post',
+    'https://com-usa-backend.vercel.app/api/form/rest-post',
     {
         method: 'POST',
         headers: {
@@ -247,10 +261,12 @@ let fullMessage = "";
       )
     }
 );
-const result = await axios.get(
-  'http://localhost:5000/api/form/rest-get'
-);
 
+const result = await axios.get(
+  'https://com-usa-backend.vercel.app/api/form/rest-get'
+);
+setSuccess(true);
+    setLoading(false);
 setstate(
   result.data.data.map(item => ({
     Name: item.name,
@@ -258,7 +274,7 @@ setstate(
   }))
 );
   
-
+  
 
 
     
@@ -330,6 +346,11 @@ const ClickButn = () => {
     <div>
       <div className='font-bold flex justify-center p-5 text-[30px]'>
         Restaurant Agent
+      </div>
+      <div className='flex justify-center'>
+        <Button variant='contained' sx={{
+          fontWeight:'bold'
+        }} onClick={OnDelte}>Delete</Button>
       </div>
       <div>
        
