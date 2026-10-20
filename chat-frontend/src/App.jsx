@@ -193,6 +193,7 @@ const [res,setres]=useState('')
    const OnChangeSearch=(e) => {
    
     setres(e.target.value)
+    setSuccess(False)
 
   }
 
