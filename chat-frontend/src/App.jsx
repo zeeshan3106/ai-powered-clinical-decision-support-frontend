@@ -1,13 +1,14 @@
 import React, { useState,useEffect, useRef  } from 'react'
 import './App.css'
 import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import CircularProgress from '@mui/material/CircularProgress';
 import { green } from '@mui/material/colors';
 import { CSSProperties } from "react";
 import { BeatLoader } from "react-spinners";
-
+import { GrAdd } from "react-icons/gr";
 import { GrFormNextLink } from "react-icons/gr";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios'
@@ -389,8 +390,16 @@ const ClickButn = () => {
 
       <div>
        
-          <div className="fixed bottom-0 left-0 w-full bg-white p-3 shadow-lg flex justify-center z-50">
-     <input type='text' className='shadow-md w-[80%] h-[50px] p-5 searchbar  ' placeholder='Enter value'
+          <div className="fixed bottom-0 left-0 w-full bg-white p-3 shadow-lg flex justify-center items-center z-50">
+              <IconButton
+    aria-label="Add"
+    color="secondary"
+      className="translate-y-2"
+    sx={{ width: 44, height: 44, flexShrink: 0 }}
+  >
+    <GrAdd />
+  </IconButton>
+     <input type='text' className='shadow-md w-[80%] h-[50px] p-5 searchbar  ' placeholder='Ask Anything...'
       value ={res}
      onChange={OnChangeSearch}
        onKeyDown={(e) => {
