@@ -1,5 +1,6 @@
 import React, { useState,useEffect, useRef  } from 'react'
 import './App.css'
+import Button from '@mui/material/Button';
 
 import { GrFormNextLink } from "react-icons/gr";
 
@@ -190,14 +191,14 @@ const ClickButn = () => {
       </div>
       <div>
        
-          <div className="fixed bottom-0 left-0 w-full bg-white p-4 shadow-lg flex justify-center z-50">
-     <input type='text' className='shadow-md ' placeholder='Enter value'
+          <div className="fixed bottom-0 left-0 w-full bg-white p-3 shadow-lg flex justify-center z-50">
+     <input type='text' className='shadow-md w-[80%] h-[50px] p-5 searchbar  ' placeholder='Enter value'
       value ={res}
      onChange={OnChangeSearch}
      
      ></input>
   <button className="submit" onClick={model}>
-    Submit
+      Submit
   </button>
 </div>
      

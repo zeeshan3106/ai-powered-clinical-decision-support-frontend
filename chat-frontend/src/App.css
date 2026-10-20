@@ -46,3 +46,11 @@ margin-left: 50px !important;
   }
   
 }
+
+
+.searchbar{
+  border-radius: 20px;
+}
+.searchbar:focus{
+  outline: transparent;
+}
