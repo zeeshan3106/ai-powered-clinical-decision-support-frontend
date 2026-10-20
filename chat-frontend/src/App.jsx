@@ -422,19 +422,28 @@ const ClickButn = () => {
 
         <Box sx={{ display: 'flex', alignItems: 'center' }} >
       <Box sx={{ m: 1, position: 'relative' }}>
-        <Fab
-          aria-label="save"
-          color="primary"
-          sx={{
-          ...buttonSx,
-          width: 40,
-          height: 40,
-          minHeight: 40,
-        }}
-          
-        >
-          {success ?   <CheckIcon />: <GrFormNextLink className="text-[29px]" />}
-        </Fab>
+     <Fab
+  aria-label={
+    loading ? "Generating response" : success ? "Sent successfully" : "Send message"
+  }
+  color="primary"
+  disabled={loading}
+  sx={{
+    ...buttonSx,
+    width: 40,
+    height: 40,
+    minHeight: 40,
+    boxShadow: "none",
+  }}
+>
+  {loading ? (
+    <CircularProgress size={22} sx={{ color: "white" }} />
+  ) : success ? (
+    <CheckIcon />
+  ) : (
+    <GrFormNextLink className="text-[29px]" />
+  )}
+</Fab>
 
         
      
