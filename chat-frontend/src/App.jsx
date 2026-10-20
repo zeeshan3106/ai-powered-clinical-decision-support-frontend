@@ -261,12 +261,12 @@ let fullMessage = "";
       )
     }
 );
-
+setSuccess(true);
+    setLoading(false);
 const result = await axios.get(
   'https://com-usa-backend.vercel.app/api/form/rest-get'
 );
-setSuccess(true);
-    setLoading(false);
+
 setstate(
   result.data.data.map(item => ({
     Name: item.name,
