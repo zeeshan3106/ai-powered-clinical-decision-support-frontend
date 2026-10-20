@@ -394,7 +394,7 @@ const ClickButn = () => {
               <IconButton
     aria-label="Add"
     color="secondary"
-      className="translate-y-2"
+      className="translate-y-[3px]"
     sx={{ width: 44, height: 44, flexShrink: 0 }}
   >
     <GrAdd className="text-gray-500"  />
