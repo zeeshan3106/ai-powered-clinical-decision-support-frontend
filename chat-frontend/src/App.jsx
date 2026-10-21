@@ -445,12 +445,7 @@ const ClickButn = () => {
     <div>
       <div className=' sidebaricon '>
         <div>
-                 <IconButton
-    aria-label="Add"
-    color="secondary"
-
-    sx={{ width: 44, height: 44, flexShrink: 0 }}
-  >
+      
        <Button  sx={{
     minWidth: 32,
     width: 32,
@@ -458,8 +453,6 @@ const ClickButn = () => {
     fontSize: 20
   }}
 onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
-
-</IconButton>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
