@@ -151,8 +151,10 @@ margin-left: 50px !important;
 }
 
 .user-message {
-  background: #f4f4f4;
+  /* background: #f4f4f4; */
+  background: #D9FDD3;
   color: #171717;
+  
   padding: 12px 16px;
   border-radius: 18px;
   max-width: 75%;
