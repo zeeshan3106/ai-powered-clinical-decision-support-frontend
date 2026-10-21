@@ -275,7 +275,7 @@ const model = async () => {
  setres('')
   try {
     const response = await fetch(
-      'https://restaurant-ai-agent-nine.vercel.app/Agent',
+      'https://healthcare-receptionist-ai-agent-ba-nu.vercel.app/Agent',
       {
         method: 'POST',
         headers: {
@@ -462,7 +462,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
       </div>
          <div className='font-bold flex justify-center p-5 text-[30px]'>
-        Restaurant Agent
+        HealthCare Agent
       </div>
 
 
