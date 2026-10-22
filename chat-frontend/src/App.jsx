@@ -606,7 +606,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-600 underline break-all"
+        className="text-blue-600 underline break-all "
         {...props}
       >
         {children}
