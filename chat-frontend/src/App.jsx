@@ -40,6 +40,14 @@ const override = {
 
 function App() {
 
+  const cleanMarkdown = (text = "") =>
+  text.replace(/\*\*\s+/g, "**")
+  .replace(/\s+\*\*/g, "**")
+    .replace(/\\+\*{3,}/g, "**") 
+    .replace(/\*{3,}/g, "**")    
+    // .replace(/\*\*\s+/g, "**")    // Remove spaces after opening **
+    
+
 const [started, setStarted] = useState(false);
    const [open, setOpen] = React.useState(false);
 
@@ -613,7 +621,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
       </a>
     )
   }}>
-    {item.Message || ""}
+     {cleanMarkdown(item.Message || "")}
   </ReactMarkdown>
 )}
       
