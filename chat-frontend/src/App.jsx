@@ -14,8 +14,8 @@ import { GrFormNextLink } from "react-icons/gr";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios'
 import Button from '@mui/material/Button';
-
-
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -600,7 +600,21 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
 
 ) : (
-  makeLinksClickable(item.Message)
+         <ReactMarkdown remarkPlugins={[remarkGfm]}   components={{
+    a: ({ href, children, ...props }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 underline break-all"
+        {...props}
+      >
+        {children}
+      </a>
+    )
+  }}>
+    {item.Message || ""}
+  </ReactMarkdown>
 )}
       
       </div>
