@@ -283,7 +283,7 @@ const model = async () => {
  setres('')
   try {
     const response = await fetch(
-      'http://localhost:8000/get',
+      'https://home-analytics-chatmodel.vercel.app/get',
       {
         method: 'POST',
         headers: {
