@@ -206,7 +206,7 @@ const makeLinksClickable = (text) => {
 
 
 useEffect(()=>{
-  axios.get('https://com-usa-backend.vercel.app/api/form/home-get').then(res =>{
+  axios.get('https://com-usa-backend.vercel.app/api/form/mobile-get').then(res =>{
     setstate(
   res.data.data.map(item => ({
     Name: item.name,
@@ -225,7 +225,7 @@ useEffect(()=>{
 
 
 const OnDelte = ()=>{
-  axios.delete('https://com-usa-backend.vercel.app/api/form/h-delete').then(res => res).catch(err => err)
+  axios.delete('https://com-usa-backend.vercel.app/api/form/mobile-delete').then(res => res).catch(err => err)
     setstate([]);
     setSuccess(false)
     setLoading(false)
@@ -249,7 +249,7 @@ const model = async () => {
 
 
     const response = await fetch(
-      'https://com-usa-backend.vercel.app/api/form/home-post',
+      'https://com-usa-backend.vercel.app/api/form/mobile-post',
       {
         method: 'POST',
         headers: {
@@ -283,7 +283,7 @@ const model = async () => {
  setres('')
   try {
     const response = await fetch(
-      'https://home-analytics-chatmodel.vercel.app/get',
+      'https://github.com/itxasad001/chatmodel-front.git/get',
       {
         method: 'POST',
         headers: {
@@ -470,7 +470,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
       </div>
          <div className='font-bold flex justify-center p-5 text-[30px]'>
-        Home Chat
+        Mobiles Chat
       </div>
 
 
@@ -556,8 +556,8 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 </div>
      {!started && state.length === 0 && (
   <div className="welcome-screen">
-   <h1 className='"welcome-title'>How Can I Help You Today?</h1>
-<p>Explore our menu, discover your favorites, and book your table instantly.</p>
+   <h1 className='"welcome-title'>Welome, Asad!</h1>
+<p>How can I help you Today?</p>
   </div>
 )}
        
@@ -587,7 +587,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
 <div className={
    item.Name === name
-        ? 'bg-[#D9FDD3] p-5 shadow-md sender w-[40%] break-words overflow-wrap-anywhere pcwidth mobile-sender user-message '
+        ? 'bg-[#D9FDD3] p-5 shadow-md sender w-[40%] break-words overflow-wrap-anywhere pcwidth mobile-sender  '
         : 'bg-white receiever p-8 shadow-md   w-[40%] break-words overflow-wrap-anywhere pcwidth Response mobile-rec'
 
 }>
