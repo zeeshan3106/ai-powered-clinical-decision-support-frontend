@@ -206,7 +206,7 @@ const makeLinksClickable = (text) => {
 
 
 useEffect(()=>{
-  axios.get('https://com-usa-backend.vercel.app/api/form/rest-get').then(res =>{
+  axios.get('https://com-usa-backend.vercel.app/api/form/home-get').then(res =>{
     setstate(
   res.data.data.map(item => ({
     Name: item.name,
@@ -225,7 +225,7 @@ useEffect(()=>{
 
 
 const OnDelte = ()=>{
-  axios.delete('https://com-usa-backend.vercel.app/api/form/rest-delete').then(res => res).catch(err => err)
+  axios.delete('https://com-usa-backend.vercel.app/api/form/h-delete').then(res => res).catch(err => err)
     setstate([]);
     setSuccess(false)
     setLoading(false)
@@ -249,7 +249,7 @@ const model = async () => {
 
 
     const response = await fetch(
-      'https://com-usa-backend.vercel.app/api/form/rest-post',
+      'https://com-usa-backend.vercel.app/api/form/home-post',
       {
         method: 'POST',
         headers: {
@@ -283,7 +283,7 @@ const model = async () => {
  setres('')
   try {
     const response = await fetch(
-      'https://healthcare-receptionist-ai-agent-ba-nu.vercel.app/Agent',
+      'http://localhost:8000/get',
       {
         method: 'POST',
         headers: {
@@ -352,7 +352,7 @@ let fullMessage = "";
  fullMessage += remaining;
 
     const saveResponse = await fetch(
-    'https://com-usa-backend.vercel.app/api/form/rest-post',
+    'https://com-usa-backend.vercel.app/api/form/home-post',
     {
         method: 'POST',
         headers: {
@@ -371,7 +371,7 @@ let fullMessage = "";
 setSuccess(true);
     setLoading(false);
 const result = await axios.get(
-  'https://com-usa-backend.vercel.app/api/form/rest-get'
+  'https://com-usa-backend.vercel.app/api/form/home-get'
 );
 
 setstate(
@@ -470,7 +470,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
       </div>
          <div className='font-bold flex justify-center p-5 text-[30px]'>
-        HealthCare Agent
+        Home Chat
       </div>
 
 
