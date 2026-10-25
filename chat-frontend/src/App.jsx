@@ -523,7 +523,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
   aria-label={
     loading ? "Generating response" : success ? "Sent successfully" : "Send message"
   }
-  color="primary"
+  color="inherit"
   disabled={loading}
   sx={{
     ...buttonSx,
@@ -531,6 +531,8 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
     height: 40,
     minHeight: 40,
     boxShadow: "none",
+      bgcolor: "black",
+       color: "white",
   }}
 >
   {loading ? (
