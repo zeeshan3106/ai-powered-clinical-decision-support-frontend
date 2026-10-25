@@ -352,7 +352,7 @@ let fullMessage = "";
  fullMessage += remaining;
 
     const saveResponse = await fetch(
-    'https://com-usa-backend.vercel.app/api/form/home-post',
+    'https://com-usa-backend.vercel.app/api/form/mobile-post',
     {
         method: 'POST',
         headers: {
