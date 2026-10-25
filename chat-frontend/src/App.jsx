@@ -589,7 +589,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
 <div className={
    item.Name === name
-        ? 'bg-[#D9FDD3] p-5 shadow-md sender w-[40%] break-words overflow-wrap-anywhere pcwidth mobile-sender  '
+        ? 'bg-[#D9FDD3] p-5 shadow-md sender w-[40%] break-words overflow-wrap-anywhere pcwidth mobile-sender user-message '
         : 'bg-white receiever p-8 shadow-md   w-[40%] break-words overflow-wrap-anywhere pcwidth Response mobile-rec'
 
 }>
