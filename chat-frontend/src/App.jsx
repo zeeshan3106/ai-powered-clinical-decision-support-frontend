@@ -283,7 +283,7 @@ const model = async () => {
  setres('')
   try {
     const response = await fetch(
-      'https://github.com/itxasad001/chatmodel-front.git/get',
+      'https://asad-mobile-shop-chatmodel.vercel.app/get',
       {
         method: 'POST',
         headers: {
@@ -371,7 +371,7 @@ let fullMessage = "";
 setSuccess(true);
     setLoading(false);
 const result = await axios.get(
-  'https://com-usa-backend.vercel.app/api/form/home-get'
+  'https://com-usa-backend.vercel.app/api/form/mobile-get'
 );
 
 setstate(
