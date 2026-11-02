@@ -206,7 +206,7 @@ const makeLinksClickable = (text) => {
 
 
 useEffect(()=>{
-  axios.get('https://com-usa-backend.vercel.app/api/form/clinic-get').then(res =>{
+  axios.get('https://com-usa-backend.vercel.app/api/form/health-get').then(res =>{
     setstate(
   res.data.data.map(item => ({
     Name: item.name,
@@ -225,7 +225,7 @@ useEffect(()=>{
 
 
 const OnDelte = ()=>{
-  axios.delete('https://com-usa-backend.vercel.app/api/form/clinic-delete').then(res => res).catch(err => err)
+  axios.delete('https://com-usa-backend.vercel.app/api/form/health-chat-delete').then(res => res).catch(err => err)
     setstate([]);
     setSuccess(false)
     setLoading(false)
@@ -249,7 +249,7 @@ const model = async () => {
 
 
     const response = await fetch(
-      'https://com-usa-backend.vercel.app/api/form/clinic-post',
+      'https://com-usa-backend.vercel.app/api/form/health-post',
       {
         method: 'POST',
         headers: {
@@ -283,7 +283,7 @@ const model = async () => {
  setres('')
   try {
     const response = await fetch(
-      'https://healthcare-ai-agent-demo.vercel.app/Agent',
+      'https://ai-powered-clinical-decision-suppor.vercel.app/get',
       {
         method: 'POST',
         headers: {
@@ -352,7 +352,7 @@ let fullMessage = "";
  fullMessage += remaining;
 
     const saveResponse = await fetch(
-    'https://com-usa-backend.vercel.app/api/form/clinic-post',
+    'https://com-usa-backend.vercel.app/api/form/health-post',
     {
         method: 'POST',
         headers: {
@@ -371,7 +371,7 @@ let fullMessage = "";
 setSuccess(true);
     setLoading(false);
 const result = await axios.get(
-  'https://com-usa-backend.vercel.app/api/form/clinic-get'
+  'https://com-usa-backend.vercel.app/api/form/health-get'
 );
 
 setstate(
@@ -470,7 +470,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 
       </div>
          <div className='font-bold flex justify-center p-5 text-[30px]'>
-        Uni Clinics Chat
+        Disease Detection
       </div>
 
 
@@ -558,7 +558,7 @@ onClick={toggleDrawer(true)}><TiThMenuOutline className=' ' /></Button>
 </div>
      {!started && state.length === 0 && (
   <div className="welcome-screen">
-   <h1 className='"welcome-title'> Welcome!</h1>
+   <h1 className='"welcome-title'>  Welcome To Health Support!</h1>
 <p>How can I help you Today?</p>
   </div>
 )}
